@@ -1,0 +1,47 @@
+version: '2'
+services:
+  mdb:
+    image: mongo:3.6
+    restart: always
+    container_name: mdb
+    volumes:
+      - mongo:/data/db
+    networks:
+      - db_net
+  aut:
+    build: ./autenticacao
+    container_name: aut
+    ports:
+      - '4000:4000'
+    networks:
+      - db_net
+      - aut_net
+  email:
+    build: ./email
+    container_name: email
+    ports:
+      - '9000:9000'
+    networks:
+      - aut_net
+      - server_net
+  smtp:
+    image: namshi/smtp:latest
+    container_name: smtp
+    restart: always
+    ports:
+      - '25:25'
+    environment:
+      GMAIL_USER: eng.inf.uminho@gmail.com
+      GMAIL_PASSWORD: Grupo3UM@
+    networks:
+      - server_net
+networks:
+  db_net:
+    driver: bridge
+  aut_net:
+    driver: bridge
+  server_net:
+    driver: bridge
+volumes:
+  mongo: 
+    driver: local
