@@ -1,0 +1,40 @@
+extends layout
+ 
+block content
+    .w3-container.w3-center.w3-jumbo.w3-margin-bottom
+        header.w3-container.w3-black
+            h1 Serviço de Email
+    .w3-container.w3-center
+        form.w3-container(action='/enviaMail', method='POST')
+            .w3-card-4.w3-light-grey
+            .w3-rest
+                input.w3-input.w3-border(name='emailOrigem' id='emailOrigem' type='email' value=mail)
+            .w3-row.w3-section                
+            .w3-rest
+                input.w3-input.w3-border(name='emailDestino' id='emailDestino' type='email' placeholder='email destino')
+            .w3-row.w3-section
+                .w3-col(style='width:50px')
+            .w3-rest
+                input.w3-input.w3-border(name='assunto' id='assunto' type='text' placeholder='Assunto')
+            .w3-row.w3-section
+                .w3-col(style='width:50px')
+            .w3-rest
+                textarea#msg.w3-input.w3-border(name='mensagem_texto' rows='10' type='text' placeholder='Mensagem' required=' ')
+                input(name='token' type='hidden' value=token readonly)
+            .w3-row.w3-section
+            br
+            button.w3-button.w3-section.w3-green.w3-padding-large(style='width:30%' type= 'submit')
+                b Enviar
+                
+        p
+        form.w3-container(action='/logout', method='GET')
+                input.w3-button.w3-section.w3-green.w3-padding-large(style='width:30%' type= 'submit' value= 'Logout')        
+    .w3-container.w3-center
+        form.w3-container
+            .w3-card-4.w3-light-grey
+            .w3-rest
+                input.w3-input.w3-border(name='token' type='text' value=token)
+            .w3-row.w3-section 
+    .w3-container.w3-center.w3-bottom.w3-section
+        footer.w3-container.w3-dark-grey
+            address Grupo3 by BrunoArieira/HugoRodrigues/JoseDias copyrights reserved.
