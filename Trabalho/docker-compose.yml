@@ -9,7 +9,7 @@ services:
     networks:
       - db_net
   aut:
-    build: ./autenticacao
+    image: picazica/aut
     container_name: aut
     ports:
       - '4000:4000'
@@ -17,7 +17,7 @@ services:
       - db_net
       - aut_net
   email:
-    build: ./email
+    image: picazica/mail
     container_name: email
     ports:
       - '9000:9000'
