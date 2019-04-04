@@ -26,7 +26,7 @@ router.get('/mail/:mail',(req, res) => {
 	//VERIFICAÇÃO INTERNA DO TOKEN
   var ttoken = req.query.token;
   var verifyTokenRequest = {
-    url: "http://localhost:4000/mail/validate",
+    url: "http://aut/mail/validate",
     method: "POST",
     form: { token: ttoken }
   }
