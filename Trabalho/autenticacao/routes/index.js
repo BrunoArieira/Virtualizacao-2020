@@ -27,7 +27,7 @@ router.post('/', async (req,res,next) => {
               User.atualiza(req.body,token)
                   .then(dados => {
                     console.log('Dados -> '+dados)
-                    res.redirect('http://localhost:9000/mail/'+dados.email+'?token=' + token)
+                    res.redirect('http://mail/mail/'+dados.email+'?token=' + token)
                   })
                   .catch(erro => res.status(500).send('Erro a enviar dados de utilizador ' + erro))
           })
@@ -45,7 +45,7 @@ router.get('/registar',(req, res) => {
 /* Inserção dos dados de utilizador na base de dados, através da query "inserir" */
 router.post('/users/registar',(req, res) => {
   User.inserir(req.body)
-      .then(dados => res.redirect('http://localhost:4000/'))
+      .then(dados => res.redirect('http://aut/'))
       .catch(erro => res.status(500).send('Erro na inserção do Utilizador: ' + erro))
 })
 
@@ -69,7 +69,7 @@ router.get('/logout/:mail',(req,res) => {
       console.log(dados)
       req.session.destroy
       req.logout()
-      res.redirect('http://localhost:9000/')})
+      res.redirect('http://mail/')})
     .catch(erro => res.status(500).send('Erro na remoçao do token: ' + erro))
 })
 

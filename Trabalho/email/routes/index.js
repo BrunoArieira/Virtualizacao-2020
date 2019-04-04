@@ -14,7 +14,7 @@ router.get('/', function(req, res, next) {
 
 /* Depois de clicar no botão, vai para a página do login (app autenticação) */
 router.get('/toLogin',(req,res) =>{
-  res.redirect('http://localhost:4000/')
+  res.redirect('http://aut/')
 });
 
 
@@ -53,7 +53,7 @@ router.get('/mail/:mail',(req, res) => {
       tokenOriginal = ""
       console.log("2ªVerificação->token : " + tokenOriginal)
       //para "resetar" o token caso nao se verifique a comparação
-      res.redirect('http://localhost:4000/logout/'+mail)
+      res.redirect('http://aut/logout/'+mail)
     }
   }
 })
@@ -62,7 +62,7 @@ router.get('/mail/:mail',(req, res) => {
 /*Faz "reset" ao token e redireciona para a app de autenticação */
 router.get('/logout',(req,res) => {
   tokenOriginal = ""
-  res.redirect('http://localhost:4000/logout/'+mail)
+  res.redirect('http://aut/logout/'+mail)
 })
 
   
