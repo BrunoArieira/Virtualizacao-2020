@@ -23,6 +23,21 @@ router.get('/toLogin',(req,res) =>{
   -> Alteração do token no url ou na caixa de texto: Sai para pág inicial
   -> Faz refresh á pag: continua */
 router.get('/mail/:mail',(req, res) => {
+	//VERIFICAÇÃO INTERNA DO TOKEN
+  var ttoken = req.query.token;
+  var verifyTokenRequest = {
+    url: "http://localhost:4000/mail/validate",
+    method: "POST",
+    form: { token: ttoken }
+  }
+        request(verifyTokenRequest, function (err, res2, body) {
+            if (err) {
+                 console.log("Á espera de token válido");
+              }
+            else {
+                console.log("A enviar");
+            }
+        });
   //VERIFICACÃOs EXTERNA (POR VARIAVEL GLOBAL)     
   console.log('Utilizador -> ' +req.params.mail)
   console.log('Token -> ' + req.query.token)    
