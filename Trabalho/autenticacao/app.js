@@ -31,7 +31,7 @@ const config = {
 
 
 mongoose
-  .connect('mongodb://mdb/register',config)
+  .connect('mongodb://mdb:27017/register',config)
   .then(() => console.log('Mongo status: ' + mongoose.connection.readyState))
   .catch(() => console.log('Mongo: erro na conexão.'))
 
