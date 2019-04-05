@@ -14,8 +14,8 @@ router.get('/', function(req, res, next) {
 
 /* Depois de clicar no botão, vai para a página do login (app autenticação) */
 router.get('/toLogin',(req,res) =>{
-  res.redirect('http://aut/')
-});
+  res.redirect('http://aut:4000/')
+}); 
 
 
 /* Recebe o mail e o token pelo URL da primeira aplicação e faz a verificação dos tokens:
@@ -31,7 +31,7 @@ router.get('/mail/:mail',(req, res) => {
     form: { token: ttoken }
   }
         request(verifyTokenRequest, function (err, res2, body) {
-            if (err) {
+            if (err) {  
                  console.log("Á espera de token válido");
               }
             else {
@@ -53,7 +53,7 @@ router.get('/mail/:mail',(req, res) => {
       tokenOriginal = ""
       console.log("2ªVerificação->token : " + tokenOriginal)
       //para "resetar" o token caso nao se verifique a comparação
-      res.redirect('http://aut/logout/'+mail)
+      res.redirect('http://aut:4000/logout/'+mail)
     }
   }
 })
@@ -62,7 +62,7 @@ router.get('/mail/:mail',(req, res) => {
 /*Faz "reset" ao token e redireciona para a app de autenticação */
 router.get('/logout',(req,res) => {
   tokenOriginal = ""
-  res.redirect('http://aut/logout/'+mail)
+  res.redirect('http://aut:4000/logout/'+mail)
 })
 
   
